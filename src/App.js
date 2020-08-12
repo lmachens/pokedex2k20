@@ -3,6 +3,7 @@ import "./App.css";
 import List from "./components/List";
 import ListItem from "./components/ListItem";
 import ListItemText from "./components/ListItemText";
+import ListItemIcon from "./components/ListItemIcon";
 
 function App() {
   return (
@@ -13,32 +14,23 @@ function App() {
       <main className="colorful-border">
         <List>
           <ListItem href="#bulbasaur">
-            <div>Icon</div>
+            <ListItemIcon
+              src="https://img.pokemondb.net/artwork/large/bulbasaur.jpg"
+              alt="Picture of Bulbasaur"
+            />
             <ListItemText primary="Bulbasaur" secondary="#001" />
-            <div>Icon</div>
-            {/* <ListItemIcon src="" />
-            <ListItemText primary="Bulbasaur" secondary="#001" />
-            <ListItemIcon src="" />
-            <ListItemIcon src="" /> */}
+            <ListItemIcon
+              src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fire.svg"
+              alt="Picture of Bulbasaur"
+            />
           </ListItem>
           <ListItem href="#ivysaur">
-            <div>Icon</div>
+            <ListItemIcon
+              src="https://img.pokemondb.net/artwork/large/ivysaur.jpg"
+              alt="Picture of Ivysaur"
+            />
             <ListItemText primary="Ivysaur" secondary="#002" />
-            <div>Icon</div>
-            {/* <ListItemIcon src="" />
-            <ListItemText primary="Bulbasaur" secondary="#001" />
-            <ListItemIcon src="" />
-            <ListItemIcon src="" /> */}
           </ListItem>
-          {/* <ListItem href="#">
-            <ListItemIcon src="" />
-            <ListItemText primary="Bulbasaur" secondary="#001" />
-          </ListItem>
-
-          <ListItem href="#">
-            <ListItemIcon src="" />
-            <ListItemText primary="Ivysaur" secondary="#002" />
-          </ListItem> */}
         </List>
       </main>
       <footer>Footer</footer>
