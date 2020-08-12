@@ -7,7 +7,7 @@ function App() {
       <header>
         Pokedex <input />
       </header>
-      <main>Pokemons</main>
+      <main className="colorful-border">Pokemons</main>
       <footer>Footer</footer>
     </div>
   );
