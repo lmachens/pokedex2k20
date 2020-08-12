@@ -1,0 +1,14 @@
+.listItemText {
+  flex-grow: 1;
+}
+
+.listItemText___primary {
+  display: block;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.listItemText___secondary {
+  display: block;
+  font-size: 0.8rem;
+}
