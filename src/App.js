@@ -11,7 +11,7 @@ function App() {
       </header>
       <main className="colorful-border">
         <List>
-          <ListItem href="#">
+          <ListItem href="#bulbasaur">
             <div>Icon</div>
             <div
               style={{
