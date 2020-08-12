@@ -19,5 +19,12 @@
 
 .app > footer {
   padding: 10px;
-  background: hotpink;
+  background: var(--bg-gradient);
+}
+
+.colorful-border {
+  border-style: solid;
+  border-image-slice: 1;
+  border-width: 5px 0;
+  border-image-source: var(--bg-border);
 }
