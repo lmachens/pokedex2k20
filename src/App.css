@@ -1,0 +1,23 @@
+.app {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.app > header {
+  font-size: 1.2rem;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--bg-gradient);
+}
+
+.app > main {
+  padding: 10px;
+  background: var(--bg-color);
+}
+
+.app > footer {
+  padding: 10px;
+  background: hotpink;
+}
