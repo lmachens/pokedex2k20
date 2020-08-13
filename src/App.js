@@ -5,7 +5,38 @@ import ListItem from "./components/ListItem";
 import ListItemText from "./components/ListItemText";
 import ListItemIcon from "./components/ListItemIcon";
 
+const bulbasaur = {
+  name: "Bulbasaur",
+  imgSrc: "https://img.pokemondb.net/artwork/large/bulbasaur.jpg",
+  id: "001",
+  link: "#bulbasaur",
+};
+
+const ivysaur = {
+  name: "Ivysaur",
+  imgSrc: "https://img.pokemondb.net/artwork/large/ivysaur.jpg",
+  id: "002",
+  link: "#ivysaur",
+};
+
+const pokemons = [ivysaur, bulbasaur];
+
 function App() {
+  // const listItems = pokemons.map((pokemon) => {
+  //   return (
+  //     <ListItem href={pokemon.link}>
+  //       <ListItemIcon src={pokemon.imgSrc} alt={`Picture of ${pokemon.name}`} />
+  //       <ListItemText primary={pokemon.name} secondary={`#${pokemon.id}`} />
+  //     </ListItem>
+  //   );
+  // });
+  // const listItems = pokemons.map((pokemon) => (
+  //   <ListItem href={pokemon.link}>
+  //     <ListItemIcon src={pokemon.imgSrc} alt={`Picture of ${pokemon.name}`} />
+  //     <ListItemText primary={pokemon.name} secondary={`#${pokemon.id}`} />
+  //   </ListItem>
+  // ));
+
   return (
     <div className="app">
       <header>
@@ -13,24 +44,18 @@ function App() {
       </header>
       <main className="colorful-border">
         <List>
-          <ListItem href="#bulbasaur">
-            <ListItemIcon
-              src="https://img.pokemondb.net/artwork/large/bulbasaur.jpg"
-              alt="Picture of Bulbasaur"
-            />
-            <ListItemText primary="Bulbasaur" secondary="#001" />
-            <ListItemIcon
-              src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/fire.svg"
-              alt="Picture of Bulbasaur"
-            />
-          </ListItem>
-          <ListItem href="#ivysaur">
-            <ListItemIcon
-              src="https://img.pokemondb.net/artwork/large/ivysaur.jpg"
-              alt="Picture of Ivysaur"
-            />
-            <ListItemText primary="Ivysaur" secondary="#002" />
-          </ListItem>
+          {pokemons.map((pokemon) => (
+            <ListItem key={pokemon.id} href={pokemon.link}>
+              <ListItemIcon
+                src={pokemon.imgSrc}
+                alt={`Picture of ${pokemon.name}`}
+              />
+              <ListItemText
+                primary={pokemon.name}
+                secondary={`#${pokemon.id}`}
+              />
+            </ListItem>
+          ))}
         </List>
       </main>
       <footer>Footer</footer>
