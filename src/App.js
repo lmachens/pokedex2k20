@@ -4,47 +4,25 @@ import List from "./components/List";
 import ListItem from "./components/ListItem";
 import ListItemText from "./components/ListItemText";
 import ListItemIcon from "./components/ListItemIcon";
-
-const bulbasaur = {
-  name: "Bulbasaur",
-  imgSrc: "https://img.pokemondb.net/artwork/large/bulbasaur.jpg",
-  id: "001",
-  link: "#bulbasaur",
-};
-
-const ivysaur = {
-  name: "Ivysaur",
-  imgSrc: "https://img.pokemondb.net/artwork/large/ivysaur.jpg",
-  id: "002",
-  link: "#ivysaur",
-};
-
-const pokemons = [ivysaur, bulbasaur];
+import { fetchPokemons } from "./api/pokemons";
 
 function App() {
-  // const listItems = pokemons.map((pokemon) => {
-  //   return (
-  //     <ListItem href={pokemon.link}>
-  //       <ListItemIcon src={pokemon.imgSrc} alt={`Picture of ${pokemon.name}`} />
-  //       <ListItemText primary={pokemon.name} secondary={`#${pokemon.id}`} />
-  //     </ListItem>
-  //   );
-  // });
-  // const listItems = pokemons.map((pokemon) => (
-  //   <ListItem href={pokemon.link}>
-  //     <ListItemIcon src={pokemon.imgSrc} alt={`Picture of ${pokemon.name}`} />
-  //     <ListItemText primary={pokemon.name} secondary={`#${pokemon.id}`} />
-  //   </ListItem>
-  // ));
+  const [pokemons, setPokemons] = React.useState(null);
+
+  const handleClick = async () => {
+    const allPokemons = await fetchPokemons();
+    setPokemons(allPokemons);
+  };
 
   return (
     <div className="app">
       <header>
         Pokedex <input />
+        <button onClick={handleClick}>Load Pokemons</button>
       </header>
       <main className="colorful-border">
         <List>
-          {pokemons.map((pokemon) => (
+          {pokemons?.map((pokemon) => (
             <ListItem key={pokemon.id} href={pokemon.link}>
               <ListItemIcon
                 src={pokemon.imgSrc}
