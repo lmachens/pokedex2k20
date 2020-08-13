@@ -7,18 +7,14 @@ import ListItemIcon from "./components/ListItemIcon";
 import { fetchPokemons } from "./api/pokemons";
 import LoadingScreen from "./components/LoadingScreen";
 
-function waitFor(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
-
 function App() {
   const [pokemons, setPokemons] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
-      await waitFor(2000);
       const allPokemons = await fetchPokemons();
       setPokemons(allPokemons);
       setIsLoading(false);
@@ -30,14 +26,23 @@ function App() {
     return <LoadingScreen />;
   }
 
+  const filteredPokemons = pokemons.filter((pokemon) => {
+    return pokemon.name.toLowerCase().startsWith(query.toLowerCase());
+  });
+
   return (
     <div className="app">
       <header>
-        Pokedex <input />
+        Pokedex{" "}
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Enter name"
+        />
       </header>
       <main className="colorful-border">
         <List>
-          {pokemons?.map((pokemon) => (
+          {filteredPokemons.map((pokemon) => (
             <ListItem key={pokemon.id} href={pokemon.link}>
               <ListItemIcon
                 src={pokemon.imgSrc}
