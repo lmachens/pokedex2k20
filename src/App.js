@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import List from "./components/List";
 import ListItem from "./components/ListItem";
@@ -6,19 +6,26 @@ import ListItemText from "./components/ListItemText";
 import ListItemIcon from "./components/ListItemIcon";
 import { fetchPokemons } from "./api/pokemons";
 
-function App() {
-  const [pokemons, setPokemons] = React.useState(null);
+function waitFor(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 
-  const handleClick = async () => {
-    const allPokemons = await fetchPokemons();
-    setPokemons(allPokemons);
-  };
+function App() {
+  const [pokemons, setPokemons] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      await waitFor(2000);
+      const allPokemons = await fetchPokemons();
+      setPokemons(allPokemons);
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="app">
       <header>
         Pokedex <input />
-        <button onClick={handleClick}>Load Pokemons</button>
       </header>
       <main className="colorful-border">
         <List>
