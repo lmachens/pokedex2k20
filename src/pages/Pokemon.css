@@ -1,0 +1,36 @@
+.pokemon {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: var(--bg-gradient);
+  padding: 20px;
+}
+
+.pokemon__header {
+  display: flex;
+  text-transform: capitalize;
+  align-items: center;
+}
+
+.pokemon__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+}
+
+.pokemon__title {
+  margin: 0;
+}
+
+.pokemon__body {
+  display: grid;
+  place-items: center;
+  margin: 20px;
+}
+
+.pokemon__image {
+  min-width: 20%;
+  margin-bottom: 10px;
+}
