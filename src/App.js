@@ -9,12 +9,16 @@ import {
 } from "react-router-dom";
 import Pokemons from "./pages/Pokemons";
 import Items from "./pages/Items";
+import Pokemon from "./pages/Pokemon";
 
 function App() {
   return (
     <Router>
       <div className="app">
         <Switch>
+          <Route path="/pokemons/:name">
+            <Pokemon />
+          </Route>
           <Route path="/pokemons">
             <Pokemons />
           </Route>
