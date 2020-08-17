@@ -6,6 +6,13 @@ import ListItemText from "./components/ListItemText";
 import ListItemIcon from "./components/ListItemIcon";
 import { fetchPokemons } from "./api/pokemons";
 import LoadingScreen from "./components/LoadingScreen";
+import {
+  BrowserRouter as Router,
+  Link,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 function App() {
   const [pokemons, setPokemons] = useState(null);
@@ -31,33 +38,46 @@ function App() {
   });
 
   return (
-    <div className="app">
-      <header>
-        Pokedex{" "}
-        <input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Enter name"
-        />
-      </header>
-      <main className="colorful-border">
-        <List>
-          {filteredPokemons.map((pokemon) => (
-            <ListItem key={pokemon.id} href={pokemon.link}>
-              <ListItemIcon
-                src={pokemon.imgSrc}
-                alt={`Picture of ${pokemon.name}`}
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route path="/pokemons">
+            <header>
+              Pokemons{" "}
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Enter name"
               />
-              <ListItemText
-                primary={pokemon.name}
-                secondary={`#${pokemon.id}`}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </main>
-      <footer>Footer</footer>
-    </div>
+            </header>
+            <main className="colorful-border">
+              <List>
+                {filteredPokemons.map((pokemon) => (
+                  <ListItem key={pokemon.id} href={pokemon.link}>
+                    <ListItemIcon
+                      src={pokemon.imgSrc}
+                      alt={`Picture of ${pokemon.name}`}
+                    />
+                    <ListItemText
+                      primary={pokemon.name}
+                      secondary={`#${pokemon.id}`}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </main>
+          </Route>
+          <Route path="/items">ITEMS</Route>
+          <Route path="/">
+            <Redirect to="/pokemons" />
+          </Route>
+        </Switch>
+        <footer>
+          <Link to="/pokemons">Pokemons</Link>
+          <Link to="/items">Items</Link>
+        </footer>
+      </div>
+    </Router>
   );
 }
 
