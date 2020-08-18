@@ -5,6 +5,7 @@ import ListItemText from "../components/ListItemText";
 import ListItemIcon from "../components/ListItemIcon";
 import { fetchPokemons } from "../api/pokemons";
 import LoadingScreen from "../components/LoadingScreen";
+import SearchInput from "../components/SearchInput";
 
 function Pokemons() {
   const [pokemons, setPokemons] = useState(null);
@@ -33,11 +34,12 @@ function Pokemons() {
     <>
       <header>
         Pokemons{" "}
-        <input
+        <SearchInput value={query} onChange={(value) => setQuery(value)} />
+        {/* <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Enter name"
-        />
+        /> */}
       </header>
       <main className="colorful-border">
         <List>
